@@ -12,7 +12,6 @@ client_id = "foo"
 publish_topic = "statestore/FA9AE35F-2F64-47CD-9BFF-08E2B32A0FE8/command/invoke"
 # response_topic = "clients/" + client_id + "/services/statestore/FA9AE35F-2F64-47CD-9BFF-08E2B32A0FE8/command/invoke/response"
 response_topic = "clients/statestore/FA9AE35F-2F64-47CD-9BFF-08E2B32A0FE8/" + client_id + "/command/notify"
-publish_payload = "Hello, MQTT!"
 
 # RESP3 State store payloads
 set_payload = b"*3\r\n$3\r\nSET\r\n$7\r\nSETKEY2\r\n$6\r\nVALUE5\r\n"
@@ -61,8 +60,6 @@ time.sleep(1)
 print("Sending message to topic: " + publish_topic)
 client.publish(topic=publish_topic, payload=set_payload, properties=properties)
 
-# print("Sending message to topic: " + subscribe_topic)
-# client.publish(topic=subscribe_topic, payload=publish_payload, properties=properties)
 time.sleep(1)
 print("Getting the value")
 client.publish(topic=publish_topic, payload=get_payload, properties=properties, qos=1)
